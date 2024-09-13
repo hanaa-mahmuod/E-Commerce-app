@@ -26,12 +26,14 @@ export default function Categories() {
     slidesToScroll: 5,
   };
   if(isLoading){
-    return(<FallingLines
-      color="var(--main-color)"
-      width="100"
-      visible={true}
-      ariaLabel="falling-circles-loading"
-      />)
+    return( <div className='h-screen flex justify-center items-center'>
+      <FallingLines
+     color="var(--main-color)"
+     width="100"
+     visible={true}
+     ariaLabel="falling-circles-loading"
+     />
+      </div>)
   }
   return (
     <Slider {...settings} arrows={false} className="px-10 mt-[30px]">
@@ -39,7 +41,7 @@ export default function Categories() {
         
         
        { data.data.data.map((category)=><div key={category._id}>
-        <img  src={category.image} className="w-full h-60 h-full object-cover object-center " />
+        <img  src={category.image} className="w-full h-30 h-full object-cover object-center " />
         <h2 className="text-[28px] text-black text-bold">{category.name}</h2>
        </div>)}
         

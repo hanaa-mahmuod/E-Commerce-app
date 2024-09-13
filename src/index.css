@@ -1,9 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-.active{
-    border-bottom: 3px solid white;
-}
+
 /* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css2?family=Encode+Sans+Expanded:wght@300&display=swap');
 :root
@@ -63,3 +61,12 @@ a , a:hover{
 {
     background-color: var(--light-color) !important;
 }
+.active {
+ border-style: solid;
+ border-color: #16A34A;
+ border-width: 3px;
+ padding: 7px;
+ border-radius: 5px;
+   color: black;
+
+  }

@@ -15,7 +15,7 @@ export default function SimpleSlider() {
     
   };
   return (
-    <Slider {...settings} arrows={false} className="mt-[100px]"> 
+    <Slider {...settings} arrows={false} className="mt-[60px]"> 
       <div>
        <img  src={img1} className="w-full h-80" />
       </div>

@@ -6,6 +6,8 @@ const [numOfCartItems, setnumOfCartItems] = useState(0);
 const [totalCartPrice, settotalCartPrice] = useState(0);
 const [cartID, setcartID] = useState(null);
 const [products, setproducts] = useState(null);
+const [isload, setisload] = useState(true);
+const [iserror, setiserror] = useState(false);
   function getcartforlogeduser(){
    axios.get('https://ecommerce.routemisr.com/api/v1/cart',
        {
@@ -40,20 +42,27 @@ const [products, setproducts] = useState(null);
               'token': localStorage.getItem('tkn')
             }
           }
+          
+          
       
 ).then((response)=>{
+  setisload(false);
+  setiserror(false);
     setnumOfCartItems(response.data.numOfCartItems);
     setproducts(response.data.data.products);
     settotalCartPrice(response.data.data.totalCartPrice);
     setcartID(response.data.data._id);
     // getcartforlogeduser();
     console.log(cartID);
+   
     return true;
 
 })
 .catch((error)=>{
+  setiserror(true);
 return false;
 })
+
    }
 
 function updateCart(productID,count){
@@ -80,7 +89,7 @@ function RemoveSpecificCartItem(productID){
 }
    useEffect(()=>{getcartforlogeduser()},[]);
   return (
-  <cartcontext.Provider value={{cart,totalCartPrice,products,numOfCartItems,getcartforlogeduser,updateCart,RemoveSpecificCartItem,cartID,clearcart}}>
+  <cartcontext.Provider value={{cart,totalCartPrice,products,numOfCartItems,getcartforlogeduser,updateCart,RemoveSpecificCartItem,cartID,clearcart,isload,iserror}}>
     {children}
   </cartcontext.Provider>
   )

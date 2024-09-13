@@ -8,6 +8,7 @@ import { x } from '../../Context/Authentcontext.jsx'
 import Login from './../Login/Login';
 import Product from './../Products/Product';
 import AllCategories from './../allCategories/AllCategories';
+
 import Brands from './../Brands/Brands';
 export default function Navbar() {
   const navigate=useNavigate();
@@ -30,7 +31,7 @@ export default function Navbar() {
    
     <li><NavLink to='/' >Home</NavLink></li>
   
-    <li><NavLink to='/WishList'>Wish List </NavLink></li>
+    <li className='text-inherit'><NavLink to='/WishList' >Wish List </NavLink></li>
     <li><NavLink to='/AllCategories'>Categories</NavLink></li>
     <li><NavLink to='/Brands'>Brands</NavLink></li>
     <li><NavLink to='/Cart'>Cart</NavLink></li>
@@ -39,15 +40,17 @@ export default function Navbar() {
     </div>
     <div className=' p-4'>
       <ul className='flex gap-4  items-center '>
-      <NavLink to='/cart'>  <div className='relative text-center '>
+    
+     
+     {token?<><li>  <NavLink to='/cart'>  <div className='relative text-center '>
         <i className=" fa-solid fa-cart-shopping text-[28px] cursor-pointer text-[#545454] hover:text-black" >
     
       </i>
       <span class="absolute top-[-10px] left-[20px]  w-[25px] h-[22px] bg-green-600 text-white text-sm  me-2 px-2.5 py-0.5 rounded text-center dark:bg-green-900 dark:text-green-300">{numOfCartItems}</span>
         </div>
-    </NavLink>
-     
-     {token? <li><span className='cursor-pointer  text-[#808080] hover:text-black ' onClick={logout}>Logout</span></li>:<><li><NavLink to='/login'>Login</NavLink></li>
+    </NavLink></li>
+    <li><span className='cursor-pointer  text-[#808080] hover:text-black ' onClick={logout}>Logout</span></li>
+    </> :<><li><NavLink to='/login'>Login</NavLink></li>
         <li><NavLink to='/signin'>Signup</NavLink></li>
        </>}
        

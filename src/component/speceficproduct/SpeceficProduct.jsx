@@ -62,18 +62,18 @@ if(isError){
     <img src={realdata.imageCover} alt={realdata.title}  className='pe-5'/>
     </div>
     <div className='w-3/4'>
-    <h1>{realdata.title}</h1>
-    <p>{realdata.description}</p>
-    <h1>{realdata.category.name}</h1>
-    <div className='flex justify-between pt-3	'>
+    <h1 className='text-[32px] font-semibold'>{realdata.title}</h1>
+    <p className='font-light'> {realdata.description}</p>
+    <h1 className='font-light pb-3'>{realdata.category.name}</h1>
+    <div className='flex justify-between pt-3 font-light	'>
        <div> 
         <p>
-        <span className={realdata.priceAfterDiscount?'line-through text-red-500':''}>{realdata.price} EGP </span>
+        <span className={realdata.priceAfterDiscount?'line-through text-red-500 ':''}>{realdata.price} EGP </span>
         <span className='ps-2'>{realdata.priceAfterDiscount}</span>
         </p> </div>
         <div className=''> <i className="fa-solid fa-star rating-color"></i>{realdata.ratingsAverage}  </div>
       </div>
-    <button onClick={()=>{addproduct(id)}} className='w-full rounded bg-emerald-400'>+add to cart</button>
+    <button onClick={()=>{addproduct(id)}} className= 'ms-10 mt-5 text-white w-3/4 h-[40px]  rounded-lg bg-[#22db14] hover:bg-[#1FC712]'>+add to cart</button>
   </div>
   </div>
  
