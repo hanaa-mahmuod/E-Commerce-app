@@ -2,7 +2,7 @@ import React from 'react'
 import axios from "axios";
 import {FallingLines} from 'react-loader-spinner'
 import { useQuery } from "@tanstack/react-query";
-
+import { ColorRing } from 'react-loader-spinner';
 
 export default function AllCategories() {
     async function getallcategories(){
@@ -13,14 +13,17 @@ export default function AllCategories() {
         queryFn:getallcategories
       })
       if(isLoading){
-        return( <div className='h-screen flex justify-center items-center'>
-          <FallingLines
-         color="var(--main-color)"
-         width="100"
-         visible={true}
-         ariaLabel="falling-circles-loading"
-         />
-          </div>)
+        return( <div className='h-screen   flex justify-center items-center bg-[#7c7c7d]'>
+          <ColorRing
+           visible={true}
+           height="80"
+           width="80"
+           ariaLabel="color-ring-loading"
+           wrapperStyle={{}}
+           wrapperClass="color-ring-wrapper"
+           colors={['#e15b64', '#f47e60', '#f8b26a', '#abbd81', '#849b87']}
+           />
+           </div>);
       }
   return (
   <div className='p-[150px]'> 

@@ -3,6 +3,7 @@ import { useQuery } from '@tanstack/react-query'
 import {FallingLines} from 'react-loader-spinner'
 import axios from 'axios'
 import toast from 'react-hot-toast'
+import { ColorRing } from 'react-loader-spinner'
 import { cartcontext } from './../../Context/CartContextProvider';
 import { wishcontext } from '../../Context/WishcontextProvider'
 export default function WishList() {
@@ -51,38 +52,21 @@ export default function WishList() {
         
         console.log(data);
         if(isLoading){
-          return(
-            <>
-<div className='h-screen flex justify-center items-center'>
-        <FallingLines
-       color="var(--main-color)"
-       width="100"
-       visible={true}
-       ariaLabel="falling-circles-loading"
-       />
-        </div>
-        </>)}
+          return( <div className='h-screen   flex justify-center items-center bg-[#7c7c7d]'>
+            <ColorRing
+             visible={true}
+             height="80"
+             width="80"
+             ariaLabel="color-ring-loading"
+             wrapperStyle={{}}
+             wrapperClass="color-ring-wrapper"
+             colors={['#e15b64', '#f47e60', '#f8b26a', '#abbd81', '#849b87']}
+             />
+             </div>);}
         if(isError){
           console.log(data.message);
            
-            return( <main className="grid min-h-full place-items-center bg-white px-6 py-24 sm:py-32 lg:px-8">
-                <div className="text-center">
-                  <p className="text-base font-semibold text-indigo-600">404</p>
-                  <h1 className="mt-4 text-3xl font-bold tracking-tight text-gray-900 sm:text-5xl">Page not found</h1>
-                  <p className="mt-6 text-base leading-7 text-gray-600">Sorry, we couldn’t find the page you’re looking for.</p>
-                  <div className="mt-10 flex items-center justify-center gap-x-6">
-                    <a
-                      href="#"
-                      className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                    >
-                      Go back home
-                    </a>
-                    <a href="#" className="text-sm font-semibold text-gray-900">
-                      Contact support <span aria-hidden="true">&rarr;</span>
-                    </a>
-                  </div>
-                 </div>
-               </main>)         }
+                  }
   return (
   <>
 

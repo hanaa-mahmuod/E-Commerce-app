@@ -61,7 +61,7 @@ a , a:hover{
 {
     background-color: var(--light-color) !important;
 }
-.active {
+/* .active {
  border-style: solid;
  border-color: #16A34A;
  border-width: 3px;
@@ -69,4 +69,4 @@ a , a:hover{
  border-radius: 5px;
    color: black;
 
-  }
+  } */

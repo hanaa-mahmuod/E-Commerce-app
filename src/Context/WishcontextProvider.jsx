@@ -17,6 +17,7 @@ const [wishListCount, setwishListCount] = useState(0);
       .then((res) => {
         toast.success('Product Added Successfully To Wishlist');
         console.log(res);
+        setwishListCount(res.data.data.length);
       })
       .catch((err) => {
         console.log(err);
@@ -29,7 +30,7 @@ const [wishListCount, setwishListCount] = useState(0);
         }
       })
       .then((res) => {
-        toast.success('Product removed Successfully from Wishlist');
+        // toast.success('Product removed Successfully from Wishlist');
         console.log(res);
         console.log(res.data.data.length);
         setwishListCount(res.data.data.length);

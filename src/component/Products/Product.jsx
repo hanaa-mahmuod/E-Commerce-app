@@ -13,9 +13,10 @@ import SpeceficProduct from './../speceficproduct/SpeceficProduct';
 import { cartcontext } from '../../Context/CartContextProvider.jsx';
 import toast, { Toaster } from 'react-hot-toast'
 import {wishcontext} from '../../Context/WishcontextProvider.jsx';
+import { ColorRing } from 'react-loader-spinner';
 export default function Product() {
   // const [allproducts, setallproducts] = useState(null)
-  const{cart,iserror,isload}=useContext(cartcontext);
+  const{cart,loading}=useContext(cartcontext);
   const {addtowishlist,removeFromWishlist}=useContext(wishcontext);
   const [iswish, setiswish] = useState(false);
   function handleaddwish(productId){
@@ -68,31 +69,18 @@ return(axios.get('https://ecommerce.routemisr.com/api/v1/products'));
     }
     )
     if(isLoading){
-      return(
-        <>
-        
-        <div className=' px-10 pt-5 flex justify-center items-center'>
-    <div className='w-[80%] ' >
-    <SimpleSlider></SimpleSlider>
-    </div>
-   
-    <div className='w-[20%]   '>
-      <div className='mt-[100px]'>
-      <div ><img src={imgblog1} alt="" className=' w-full h-40  ' /></div>
-      <div> <img src={imgblog2} alt="" className='w-full h-40 ' /></div>
-      </div>
-    </div>
-    </div>
-    <div className='h-screen flex justify-center items-center'>
-        <FallingLines
-       color="var(--main-color)"
-       width="100"
-       visible={true}
-       ariaLabel="falling-circles-loading"
-       />
-        </div>
-        </>
-      )
+            
+      return( <div className='h-screen  w-screen  flex justify-center items-center bg-[#7c7c7d]'>
+        <ColorRing
+         visible={true}
+         height="80"
+         width="80"
+         ariaLabel="color-ring-loading"
+         wrapperStyle={{}}
+         wrapperClass="color-ring-wrapper"
+         colors={['#e15b64', '#f47e60', '#f8b26a', '#abbd81', '#849b87']}
+         />
+         </div>);
     }
   return (
    <>

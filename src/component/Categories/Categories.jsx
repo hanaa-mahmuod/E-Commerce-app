@@ -3,7 +3,7 @@ import React, { useEffect,useState } from "react";
 import Slider from "react-slick";
 import {FallingLines} from 'react-loader-spinner'
 import { useQuery } from "@tanstack/react-query";
-
+import { ColorRing } from "react-loader-spinner";
 export default function Categories() {
     // const [allcategories, setallcategories] = useState(null)
    async function getallcategories(){
@@ -26,14 +26,8 @@ export default function Categories() {
     slidesToScroll: 5,
   };
   if(isLoading){
-    return( <div className='h-screen flex justify-center items-center'>
-      <FallingLines
-     color="var(--main-color)"
-     width="100"
-     visible={true}
-     ariaLabel="falling-circles-loading"
-     />
-      </div>)
+   
+ return('')
   }
   return (
     <Slider {...settings} arrows={false} className="px-10 mt-[30px]">

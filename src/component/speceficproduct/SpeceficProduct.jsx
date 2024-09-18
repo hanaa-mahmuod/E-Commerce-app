@@ -4,6 +4,7 @@ import React, { useContext } from 'react'
 import { useParams } from 'react-router-dom'
 import {FallingLines} from 'react-loader-spinner'
 import { cartcontext } from '../../Context/CartContextProvider';
+import { ColorRing } from 'react-loader-spinner';
 import toast, { Toaster } from 'react-hot-toast'
 
 export default function SpeceficProduct() {
@@ -38,13 +39,16 @@ export default function SpeceficProduct() {
   })
   
 if(isLoading){
- return( <div className='h-screen flex justify-center items-center'>
-  <FallingLines
- color="var(--main-color)"
- width="100"
- visible={true}
- ariaLabel="falling-circles-loading"
- />
+ return( <div className='h-screen   flex justify-center items-center bg-[#7c7c7d]'>
+ <ColorRing
+  visible={true}
+  height="80"
+  width="80"
+  ariaLabel="color-ring-loading"
+  wrapperStyle={{}}
+  wrapperClass="color-ring-wrapper"
+  colors={['#e15b64', '#f47e60', '#f8b26a', '#abbd81', '#849b87']}
+  />
   </div>);
 }
 if(isError){

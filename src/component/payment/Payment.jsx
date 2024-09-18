@@ -8,7 +8,7 @@ import toast from 'react-hot-toast';
 import { useState } from 'react';
 export default function Payment() {
     
-    const {cartID}=useContext(cartcontext);
+    const {cartID,setnumOfCartItems,settotalCartPrice}=useContext(cartcontext);
     const [isonline, setisonline] = useState(false);
     function cashoronline(){
       if(isonline){
@@ -51,7 +51,7 @@ export default function Payment() {
       axios.post(`https://ecommerce.routemisr.com/api/v1/orders/${cartID}`,backbody,
         {headers:{'token':localStorage.getItem('tkn')}})
       .then((res)=>{
-      console.log('res',res);
+      console.log('res',res.data.data.user);
       toast.success('congrats');
     
       })

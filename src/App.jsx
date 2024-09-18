@@ -12,6 +12,7 @@ import CartContextProvider from './Context/CartContextProvider.jsx'
 import toast, { Toaster } from 'react-hot-toast'
 import Cart from './component/cart/Cart.jsx';
 import Payment from './component/payment/Payment.jsx'
+import ForgetPassword from './component/ForgetPassword/ForgetPassword.jsx';
 import {
   createBrowserRouter,
   RouterProvider,
@@ -19,7 +20,11 @@ import {
 import Brands from './component/Brands/Brands.jsx';
 import AllCategories from './component/allCategories/AllCategories.jsx';
 import WishcontextProvider from './Context/WishcontextProvider.jsx';
+import VerifyCode from './component/verifyCode/VerifyCode';
+import ResetPassword from './component/ResetPassword/ResetPassword';
 import {
+
+
 
 
   QueryClient,
@@ -60,6 +65,16 @@ const router = createBrowserRouter([
     { path: "/wishlist",  element: <Protectedcomp>
    <WishList></WishList>
     </Protectedcomp>},
+    { path: "/forgetPassword",  element:
+   <ForgetPassword></ForgetPassword>
+    },
+   
+    { path: "/VerifyCode",  element:
+   <VerifyCode></VerifyCode>
+    },
+    { path: "/ResetPassword",  element:
+   <ResetPassword></ResetPassword>
+    },
    
    ],
    

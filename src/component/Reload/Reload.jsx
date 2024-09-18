@@ -1,19 +1,17 @@
 import React from 'react'
-import { Circles } from 'react-loader-spinner'
+import { ColorRing } from 'react-loader-spinner';
 export default function Reload() {
-  return (
-   <>
-   <div className='w-screen h-screan bg-gray-500 flex justify-center '>
-   <Circles
+
+   return( <div className='h-screen   flex justify-center items-center bg-[#7c7c7d]'>
+ <ColorRing
+  visible={true}
   height="80"
   width="80"
-  color="#4fa94d"
-  ariaLabel="circles-loading"
+  ariaLabel="color-ring-loading"
   wrapperStyle={{}}
-  wrapperClass=""
-  visible={true}
+  wrapperClass="color-ring-wrapper"
+  colors={['#e15b64', '#f47e60', '#f8b26a', '#abbd81', '#849b87']}
   />
-   </div>
-   </>
-  )
+  </div>);
+  
 }

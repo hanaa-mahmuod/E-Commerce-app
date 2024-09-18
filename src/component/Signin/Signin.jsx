@@ -82,7 +82,7 @@ rePassword:Yup.string().required('required').oneOf([Yup.ref('password')],'repass
    })
   return (
     <div className='p-[200px]'>
-
+<div>Login Now</div>
 {iserror?<div class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400" role="alert">
   <span class="font-medium">{iserror}</span>
 </div>:''}
@@ -130,6 +130,11 @@ rePassword:Yup.string().required('required').oneOf([Yup.ref('password')],'repass
       
       <button type="submit" className="text-white bg-[#22db14] hover:bg-[#1FC712] focus:ring-4 focus:outline-none  font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
     </form>
+    
+
+
+
+
     </div>
   )
 }

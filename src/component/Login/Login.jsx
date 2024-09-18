@@ -4,11 +4,13 @@ import * as Yup from 'yup';
 import axios from 'axios';
 import {useState } from 'react';
 import { useNavigate } from "react-router-dom";
+import { ColorRing } from 'react-loader-spinner';
 import Product from '../Products/Product.jsx';
 import { x } from '../../Context/Authentcontext.jsx';
 import { cartcontext } from '../../Context/CartContextProvider.jsx';
-
+import { NavLink } from 'react-router-dom';
 export default function Login() {
+  const [loading, setLoading] = useState(false);
   const {settoken}=useContext(x);
   const{getcartforlogeduser}=useContext(cartcontext);
   const [iserror, seterror] = useState(null);
@@ -22,6 +24,7 @@ email:'',
    const registerForm=useFormik({
     initialValues:user,
     onSubmit:function(values){
+      setLoading(true);
       axios.post('https://ecommerce.routemisr.com/api/v1/auth/signin',values)
       .then(function(X){
         getcartforlogeduser();  
@@ -41,7 +44,9 @@ email:'',
         // setInterval(() => {
         //   seterror(null);
         // }, 2000);
-      })
+      }).finally(() => {
+        setLoading(false); // Set loading to false when the request is done
+      });
       
     },
 //     validate:function(values){
@@ -86,8 +91,21 @@ email:Yup.string().required('required').matches(/^[A-Za-z0-9._%-]+@[A-Za-z0-9.-]
 
 
    })
+ 
   return (
-    <div className='p-[200px]'>
+    <>
+    {loading?<div className='h-screen   flex justify-center items-center bg-[#7c7c7d]'>
+ <ColorRing
+  visible={true}
+  height="80"
+  width="80"
+  ariaLabel="color-ring-loading"
+  wrapperStyle={{}}
+  wrapperClass="color-ring-wrapper"
+  colors={['#e15b64', '#f47e60', '#f8b26a', '#abbd81', '#849b87']}
+  />
+  </div>:''}
+    <div className='p-[150px]'>
 
 {iserror?<div class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400" role="alert">
   <span class="font-medium">{iserror}</span>
@@ -95,28 +113,30 @@ email:Yup.string().required('required').matches(/^[A-Za-z0-9._%-]+@[A-Za-z0-9.-]
 {isAccept?<div class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400" role="alert">
   <span class="font-medium">Welcome Back!</span>
 </div>:''}
+
+  <h1 className='text-[32px]  '> login now </h1>
     <form className="" onSubmit={registerForm.handleSubmit}>
-   
-      <div className="relative z-0 w-full mb-5 group">
-          <input type="email"value={registerForm.values.email} onChange={registerForm.handleChange}  onBlur={registerForm.handleBlur} name="email" id="email" className=" block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" pplaceholder=" " required />
-          <label for="email" className="peer-focus:font-medium absolute  text-lg text-black dark:text-gray-400 duration-300 transform -translate-y-5 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus::text-[#0AAD0A] peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-5">Email:</label>
-      </div>
-      {registerForm.errors.email &&registerForm.touched.email?<div class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400" role="alert">
+     
+  <div className="mb-5">
+    <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"> Email:</label>
+    <input type="email" id="email" value={registerForm.values.email} onChange={registerForm.handleChange}  onBlur={registerForm.handleBlur} name="email"   className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="name@flowbite.com" required />
+  </div>
+  {registerForm.errors.email &&registerForm.touched.email?<div class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400" role="alert">
   <span class="font-medium"> {registerForm.errors.email}</span> 
 </div>:null}
-      <div className="relative z-0 w-full mb-5 group mt-5">
-          <input type="password"  value={registerForm.values.password} onChange={registerForm.handleChange}onBlur={registerForm.handleBlur} name="password" id="password" className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
-          <label for="password" className="peer-focus:font-medium absolute  text-lg text-black dark:text-gray-400 duration-300 transform -translate-y-5 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus::text-[#0AAD0A] peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-5">Password</label>
-      </div>
-      {registerForm.errors.password && registerForm.touched.password?<div class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400" role="alert">
+  <div className="mb-5">
+    <label htmlFor="password" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your password</label>
+    <input type="password" id="password"  value={registerForm.values.password} onChange={registerForm.handleChange}onBlur={registerForm.handleBlur} name="password" className=" mb-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required />
+    <NavLink to='/forgetPassword'><div  className=' text-lg hover:text-[#1FC712]'>Forget Password?</div></NavLink>
+  </div>
+  {registerForm.errors.password && registerForm.touched.password?<div class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400" role="alert">
   <span class="font-medium">{registerForm.errors.password}!</span> 
 </div>:null}
-    
-    
-       
-      
-      <button type="submit" className="text-white bg-[#22db14] hover:bg-[#1FC712] focus:ring-4 focus:outline-none  font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
-    </form>
+
+  <button type="submit" className="text-white bg-[#22db14] hover:bg-[#1FC712] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Login</button>
+
+</form>
     </div>
+    </>
   )
 }

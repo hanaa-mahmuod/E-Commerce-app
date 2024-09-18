@@ -2,7 +2,7 @@ import React from 'react'
 import axios from "axios";
 import {FallingLines} from 'react-loader-spinner'
 import { useQuery } from "@tanstack/react-query";
-
+import { ColorRing } from 'react-loader-spinner';
 
 export default function Brands() {
     async function getallbrands(){
@@ -13,25 +13,21 @@ export default function Brands() {
         queryFn:getallbrands
       })
       if(isLoading){
-        return( <div className='h-screen flex justify-center items-center'>
-          <FallingLines
-         color="var(--main-color)"
-         width="100"
-         visible={true}
-         ariaLabel="falling-circles-loading"
-         />
-          </div>)
+        return( <div className='h-screen   flex justify-center items-center bg-[#7c7c7d]'>
+          <ColorRing
+           visible={true}
+           height="80"
+           width="80"
+           ariaLabel="color-ring-loading"
+           wrapperStyle={{}}
+           wrapperClass="color-ring-wrapper"
+           colors={['#e15b64', '#f47e60', '#f8b26a', '#abbd81', '#849b87']}
+           />
+           </div>);
         
       }
   return (
-  // <div className='p-10'> 
-  //   <div className=' grid md:grid-cols-3  lg:grid-cols-6 gap-5 '>
-  //   { data.data.data.map((brand)=><div key={brand._id} >
-  //       <img  src={brand.image} className="w-full h-[300px]" />
-  //       <h2>{brand.name}</h2>
-  //      </div>)}
-  //   </div>
-  // </div>
+ 
   <div className='p-[150px]'> 
     <div className=' grid md:grid-cols-2  lg:grid-cols-3 gap-5 '>
     {data.data.data.map((brand)=><div key={brand._id} className=' bg-white border border-gray-200 rounded-lg hover:shadow-green-500 shadow-lg ' >
