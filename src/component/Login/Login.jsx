@@ -35,7 +35,7 @@ email:'',
         setAaccept(true);
         
         
-          navigate('/');
+         
          
       })
       .catch(function(X){
