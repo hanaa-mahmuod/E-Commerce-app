@@ -18,20 +18,19 @@ export default function Product() {
   // const [allproducts, setallproducts] = useState(null)
   const{cart,loading}=useContext(cartcontext);
   const {addtowishlist,removeFromWishlist}=useContext(wishcontext);
-  const [iswish, setiswish] = useState(false);
-  function handleaddwish(productId){
-   
-    if(iswish){
-      setiswish(false);
-      removeFromWishlist(productId)
-    }
-    else
-    {setiswish(true);
+  const [wishStatus, setWishStatus] = useState({});
+  // const [iswish, setiswish] = useState(false);
+  
+  const handleaddwish = (productId) => {
+    const currentWishStatus = wishStatus[productId] || false;
+    if (currentWishStatus) {
+      setWishStatus((prev) => ({ ...prev, [productId]: false }));
+      removeFromWishlist(productId);
+    } else {
+      setWishStatus((prev) => ({ ...prev, [productId]: true }));
       addtowishlist(productId);
     }
-    console.log(iswish);
-
-  }
+  };
   async function addproduct(id){
     const res= await cart(id)
     
@@ -122,7 +121,9 @@ return(axios.get('https://ecommerce.routemisr.com/api/v1/products'));
       
       </div>
     
-      </Link> <i onClick={() => {handleaddwish(product._id)}}   className={iswish? "mb-5 fa-solid fa-heart absolute cursor-pointer right-10 bottom-0 text-[30px] mt-[10px] text-red-500 " :"mb-5 fa-solid fa-heart absolute cursor-pointer right-10 bottom-0 text-[30px] mt-[10px]  "}></i></div> )} 
+      </Link> <i onClick={() => { handleaddwish(product._id) }}
+                className={wishStatus[product._id] ? "mb-5 fa-solid fa-heart absolute cursor-pointer right-10 bottom-0 text-[30px] mt-[10px] text-red-500"
+                  : "mb-5 fa-solid fa-heart absolute cursor-pointer right-10 bottom-0 text-[30px] mt-[10px]"}></i></div> )} 
       </div></div>
   
  
