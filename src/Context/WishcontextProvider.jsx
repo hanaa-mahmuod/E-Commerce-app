@@ -32,7 +32,7 @@ const [wishListCount, setwishListCount] = useState(0);
       .then((res) => {
         // toast.success('Product removed Successfully from Wishlist');
         console.log(res);
-        console.log(res.data.data.length);
+        console.log('wishListCount ',res.data.data.length);
         setwishListCount(res.data.data.length);
       })
       .catch((err) => {
@@ -41,7 +41,7 @@ const [wishListCount, setwishListCount] = useState(0);
   }
 
   return (
-    <wishcontext.Provider value={{ addtowishlist,removeFromWishlist,wishListCount }}>
+    <wishcontext.Provider value={{ addtowishlist,removeFromWishlist,wishListCount ,setwishListCount}}>
       {children} {/* render children */}
     </wishcontext.Provider>
   );

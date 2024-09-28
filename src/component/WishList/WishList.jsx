@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from 'react'
-import { useQuery } from '@tanstack/react-query'
+import { useQuery,useQueryClient } from '@tanstack/react-query'
 import {FallingLines} from 'react-loader-spinner'
 import axios from 'axios'
 import toast from 'react-hot-toast'
@@ -8,18 +8,21 @@ import { cartcontext } from './../../Context/CartContextProvider';
 import { wishcontext } from '../../Context/WishcontextProvider'
 export default function WishList() {
   const {addtowishlist,removeFromWishlist,wishListCount}=useContext(wishcontext);
+  const queryClient = useQueryClient();
     const{cart}=useContext(cartcontext);
     function handleRemovewish(productId){
    
       
         removeFromWishlist(productId)
-   
+        queryClient.invalidateQueries(['allwishlist']);
   
     }
     async function addproduct(id){
         const res= await cart(id)
         if(res){
           removeFromWishlist(id);
+          queryClient.invalidateQueries(['allwishlist']);
+          refetch(); 
           getwishlist();
          toast.success('Product Added Successfuly',{
            position:'top-right',

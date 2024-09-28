@@ -8,7 +8,7 @@ import { x } from '../../Context/Authentcontext.jsx'
 import Login from './../Login/Login';
 import Product from './../Products/Product';
 import AllCategories from './../allCategories/AllCategories';
-
+import styles from './Navbar.module.css'
 import Brands from './../Brands/Brands';
 export default function Navbar() {
   const navigate=useNavigate();
@@ -26,15 +26,15 @@ export default function Navbar() {
   <div className='fixed top-0 left-0 right-0 z-50 bg-[#F8F9FA] '>
   <div className='flex justify-between  px-20  '>
   <div className='flex gap-4 p-4'>
-    <Link to='/'><img src={logo} alt="logo"  className='w-[200px] '/></Link>
+    <Link to='/'><img src={logo} alt="logo"  className='w-[200px]  '/></Link>
   {token?<ul className='flex gap-6 items-center ms-[270px]  text-[#808080] '>
    
-    <li><NavLink to='/' >Home</NavLink></li>
+    <li><NavLink to='/'  className={({ isActive }) => isActive ? `${styles.active} text-black` : 'text-[#808080]'} >Home</NavLink></li>
   
-    <li className='text-inherit'><NavLink to='/WishList' >Wish List </NavLink></li>
-    <li><NavLink to='/AllCategories'>Categories</NavLink></li>
-    <li><NavLink to='/Brands'>Brands</NavLink></li>
-    <li><NavLink to='/Cart'>Cart</NavLink></li>
+    <li className='text-inherit '><NavLink to='/WishList'  className={({ isActive }) => isActive ? `${styles.active} text-black` : 'text-[#808080]'} >Wish List </NavLink></li>
+    <li><NavLink to='/AllCategories'  className={({ isActive }) => isActive ? `${styles.active} text-black` : 'text-[#808080]'}>Categories</NavLink></li>
+    <li><NavLink to='/Brands' className={({ isActive }) => isActive ? `${styles.active} text-black` : 'text-[#808080]'}>Brands</NavLink></li>
+    <li><NavLink to='/Cart'  className={({ isActive }) => isActive ? `${styles.active} text-black` : 'text-[#808080]'}>Cart</NavLink></li>
   </ul>:''}
   
     </div>
@@ -42,7 +42,7 @@ export default function Navbar() {
       <ul className='flex gap-4  items-center '>
     
      
-     {token?<><li>  <NavLink to='/cart'>  <div className='relative text-center '>
+     {token?<><li>  <NavLink to='/cart'  className={({ isActive }) => isActive ? `${styles.active} text-black` : 'text-[#808080]'}>  <div className='relative text-center '>
         <i className=" fa-solid fa-cart-shopping text-[28px] cursor-pointer text-[#545454] hover:text-black" >
     
       </i>
@@ -50,8 +50,8 @@ export default function Navbar() {
         </div>
     </NavLink></li>
     <li><span className='cursor-pointer  text-[#808080] hover:text-black ' onClick={logout}>Logout</span></li>
-    </> :<><li><NavLink to='/login'>Login</NavLink></li>
-        <li><NavLink to='/signin'>Signup</NavLink></li>
+    </> :<><li><NavLink to='/login'  className={({ isActive }) => isActive ? `${styles.active} text-black` : 'text-[#808080]'}>Login</NavLink></li>
+        <li><NavLink to='/signin'  className={({ isActive }) => isActive ? `${styles.active} text-black` : 'text-[#808080]'}>Signup</NavLink></li>
        </>}
        
      

@@ -35,7 +35,7 @@ export default function Categories() {
         
         
        { data.data.data.map((category)=><div key={category._id}>
-        <img  src={category.image} className="w-full h-30 h-full object-cover object-center " />
+        <img  src={category.image} className="w-full  h-[250px] object-cover object-center " />
         <h2 className="text-[28px] text-black text-bold">{category.name}</h2>
        </div>)}
         

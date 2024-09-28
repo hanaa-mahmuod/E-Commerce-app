@@ -2,7 +2,7 @@ import React from 'react'
 import { ColorRing } from 'react-loader-spinner';
 export default function Reload() {
 
-   return( <div className='h-screen   flex justify-center items-center bg-[#7c7c7d]'>
+   return( <div className='h-screen   flex justify-center items-center bg-gray-100'>
  <ColorRing
   visible={true}
   height="80"
