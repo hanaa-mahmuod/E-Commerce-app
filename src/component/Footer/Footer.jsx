@@ -6,7 +6,7 @@ import goegleapp from '../../assets/67006-app-play-google-android-store-free-cli
 import apple from '../../assets/app-store-logo.png'
 export default function Footer() {
   return (
-    <div className='bg-gray-200 '>
+    <div className='bg-gray-200 mt-[50px] '>
 
       <div className="content p-10">
 <h1 className='text-[30px]'>Get the FreshCart app</h1>

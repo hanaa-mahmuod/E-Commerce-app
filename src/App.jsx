@@ -43,7 +43,7 @@ const router = createBrowserRouter([
     { path: "*",  element: <ErrorPage></ErrorPage>},
     { path: "signin",  element: <Signin/>
     },
-    { path: "",  element: <Protectedcomp>
+    { path: "/allorders",  element: <Protectedcomp>
       <Product/>
     </Protectedcomp>},
     { path: "Brands",  element: <Protectedcomp>

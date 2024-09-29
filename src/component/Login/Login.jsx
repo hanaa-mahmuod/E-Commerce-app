@@ -34,7 +34,7 @@ email:'',
         localStorage.setItem('tkn',X.data.token);
         setAaccept(true);
         
-        
+        navigate('/allorders')
          
          
       })
