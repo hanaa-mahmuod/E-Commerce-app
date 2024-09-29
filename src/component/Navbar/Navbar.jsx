@@ -29,7 +29,7 @@ export default function Navbar() {
     <Link to='/'><img src={logo} alt="logo"  className='w-[200px]  '/></Link>
   {token?<ul className='flex gap-6 items-center ms-[270px]  text-[#808080] '>
    
-    <li><NavLink to='/'  className={({ isActive }) => isActive ? `${styles.active} text-black` : 'text-[#808080]'} >Home</NavLink></li>
+    <li><NavLink to='/allorders'  className={({ isActive }) => isActive ? `${styles.active} text-black` : 'text-[#808080]'} >Home</NavLink></li>
   
     <li className='text-inherit '><NavLink to='/WishList'  className={({ isActive }) => isActive ? `${styles.active} text-black` : 'text-[#808080]'} >Wish List </NavLink></li>
     <li><NavLink to='/AllCategories'  className={({ isActive }) => isActive ? `${styles.active} text-black` : 'text-[#808080]'}>Categories</NavLink></li>
